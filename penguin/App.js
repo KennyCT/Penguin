@@ -9,10 +9,11 @@ export default function App() {
     <View style={styles.container}>
       {/*<View style={styles.imageContainer}>*/}
         <Image source={PlaceholderImage} style={styles.image} />
-        <Component_test />
+          <Component_test />
       {/*</View>*/}
       <Text>Penguin yeaaa</Text>
-      <Text style={{ color: "red" }}>Red</Text>
+      <Text style={{ color: "purple", fontSize: 65 }}>Matthew S '25</Text>
+      <Text style={{ color: "blue" }}>Green</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 320,
-    height: 200,
+    height: 300,
     borderRadius: 18,
   },
 });
