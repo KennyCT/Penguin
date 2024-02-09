@@ -3,52 +3,50 @@ import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView } from 'r
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
+import { Link, router } from 'expo-router';
+
 var AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One Lol</Text>
-      <Button onPress={() => { console.log('You tapped the button!'); }} title="Press Me" />
+      
+      <Text style={styles.title}>Tab One</Text>
+
+      <Link href="/(tabs)/two" asChild><Button onPress={() => console.log("pressed")} title="Go to Tab 2" /></Link>
 
       <AnimatedScrollView
             horizontal={true}
             directionalLockEnabled={true}
             style={[{flex: 1, height: 100}, {backgroundColor: 'red'}]}
-            onScroll={console.log("Scrolled")}
+            onScroll={event => 
+            { 
+              console.log("! scroll begin");
+              
+              var currentOffset = event.nativeEvent.contentOffset.x;
+              var direction = currentOffset > this.offset ? 'left' : 'right';
+              //this.offset = currentOffset;
+              if (direction == 'left') {
+                router.replace('/(tabs)/two');
+              }
+              console.log(direction);
+            }}
+            onMomentumScrollEnd={event => {console.log("! scroll ended")}}
             scrollEventThrottle={16}
           >
-            <View style={{flex: 1}}>
-              <Text>----- Slide the row that way and release</Text>
-            </View>
-          </AnimatedScrollView>
+          <View style={{flex: 1}}>
+            <Text>----- Scroll Me -----</Text>
+          </View>
+      </AnimatedScrollView>
 
-      <ScrollView
-   horizontal={true}
-   pagingEnabled={true}
-   onMomentumScrollEnd={event => {
-      console.log("scroll ended")
-   }}>
-      <Text>Scroll me here eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</Text>
-</ScrollView>
-      <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
-      </ScrollView>
-    </SafeAreaView>
+
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

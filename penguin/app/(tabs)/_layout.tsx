@@ -1,59 +1,85 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Link, Navigator, Slot } from "expo-router";
+import { View, Text, StyleSheet, Pressable, ViewStyle } from "react-native";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+export const unstable_settings = {
+  initialRouteName: "index",
+};
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+    <View style={{ flex: 1 }}>
+      <Navigator>
+        <CustomTabBar />
+        <Slot />
+      </Navigator>
+    </View>
   );
 }
+
+function CustomTabBar() {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        backgroundColor: "#191A20",
+        paddingVertical: 60,
+        borderBottomColor: "#D8D8D8",
+        borderBottomWidth: 1,
+      }}
+    >
+
+      <View style={{flexDirection: "row", }}>
+        <TabLink name="index" href="/(tabs)/">
+          {({ focused }) => (
+            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
+              First
+            </Text>
+          )}
+        </TabLink>
+
+        <TabLink name="two" href="/(tabs)/two">
+          {({ focused }) => (
+            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
+              Second
+            </Text>
+          )}
+        </TabLink>
+      </View>
+    </View>
+  );
+}
+
+function useIsTabSelected(name: string): boolean {
+  const { state } = Navigator.useContext();
+  const current = state.routes.find((route, i) => state.index === i);
+  return current.name === name;
+}
+
+function TabLink({
+  children,
+  name,
+  href,
+  style,
+}: {
+  children?: any;
+  name: string;
+  href: string;
+  style?: ViewStyle;
+}) {
+  const focused = useIsTabSelected(name);
+  return (
+    <Link href={href} asChild style={style}>
+      <Pressable>{(props) => children({ ...props, focused })}</Pressable>
+    </Link>
+  );
+}
+
+const styles = StyleSheet.create({
+  link: {
+    fontSize: 24,
+    color: "#E7E9E6",
+    fontWeight: "bold",
+    paddingHorizontal: 24,
+  },
+});
