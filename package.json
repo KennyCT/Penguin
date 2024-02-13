@@ -9,7 +9,7 @@
   "name": "penguin",
   "description": "The app for your local community.",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "home.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -2,14 +2,14 @@ import { Link, Navigator, Slot } from "expo-router";
 import { View, Text, StyleSheet, Pressable, ViewStyle } from "react-native";
 
 export const unstable_settings = {
-  initialRouteName: "index",
+  initialRouteName: "home",
 };
 
 export default function Layout() {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.temp}>
       <Navigator>
-        <CustomTabBar />
+        <CustomTabBar/>
         <Slot />
       </Navigator>
     </View>
@@ -18,35 +18,36 @@ export default function Layout() {
 
 function CustomTabBar() {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        backgroundColor: "#191A20",
-        paddingVertical: 60,
-        borderBottomColor: "#D8D8D8",
-        borderBottomWidth: 1,
-      }}
-    >
+    <View style={styles.bottomcontent}>
 
       <View style={{flexDirection: "row", }}>
-        <TabLink name="index" href="/(tabs)/">
+        <TabLink name="home" href="/(tabs)/home">
           {({ focused }) => (
             <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
-              First
+              Home
             </Text>
           )}
         </TabLink>
 
-        <TabLink name="two" href="/(tabs)/two">
+        <TabLink name="iceberg" href="/(tabs)/iceberg">
           {({ focused }) => (
             <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
-              Second
+              Icebergs
             </Text>
           )}
         </TabLink>
+
+        <TabLink name="three" href="/(tabs)/three">
+          {({ focused }) => (
+            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
+              Igloos
+            </Text>
+          )}
+        </TabLink>
+
       </View>
     </View>
+    
   );
 }
 
@@ -82,4 +83,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingHorizontal: 24,
   },
+  temp: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomcontent: {
+    position: 'absolute', 
+    bottom: 0,
+    zIndex: 999,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#191A20",
+    paddingVertical: 40,
+    borderBottomColor: "#D8D8D8",
+    borderBottomWidth: 1,
+  }
 });
