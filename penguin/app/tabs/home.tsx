@@ -33,6 +33,7 @@ export default function TabOneScreen() {
 
         <Text style={styles.title}>Home Screen.</Text>
         <Link href="/tabs/iceberg" asChild><Button onPress={() => console.log("pressed")} title="Go to Icebergs" /></Link>
+        <Link href="/" asChild><Button onPress={() => console.log("pressed")} title="Go to Index" /></Link>
 
         <Image
         style={styles.image1}

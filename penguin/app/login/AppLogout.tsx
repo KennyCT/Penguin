@@ -9,22 +9,17 @@ import React, { useCallback } from 'react'
 
 import { getLoggedIn, setLoggedIn } from '@/app/index';
 
-function refreshPage() {
-  console.log("refresh..");
-  console.log(getLoggedIn());
-  setLoggedIn(true);
-}
 
-export default function LoginScreen({loginStatus, setLoginStatus}) {
+export default function LogoutScreen({loginStatus, setLoginStatus}) {
 
   const handleInputChange = useCallback(event => {
-    setLoginStatus("true")
+    setLoginStatus("false")
   }, [setLoginStatus])
 
   return (
   
       <View>
-        <Button onPress={handleInputChange}  title="Log In" color="green" />
+        <Button onPress={handleInputChange}  title="Log Out" color="red" />
       </View>
 
   );
