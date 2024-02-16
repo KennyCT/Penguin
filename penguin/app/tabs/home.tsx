@@ -23,7 +23,7 @@ export default function TabOneScreen() {
               console.log(currentOffset, Math.abs(currentOffset));
 
               if (direction == 'left' && Math.abs(currentOffset) > 65) {
-                router.replace('/(tabs)/iceberg');
+                router.replace('/tabs/iceberg');
               }
 
             }}
@@ -32,7 +32,7 @@ export default function TabOneScreen() {
       <View style={styles.container}>
 
         <Text style={styles.title}>Home Screen.</Text>
-        <Link href="/(tabs)/iceberg" asChild><Button onPress={() => console.log("pressed")} title="Go to Icebergs" /></Link>
+        <Link href="/tabs/iceberg" asChild><Button onPress={() => console.log("pressed")} title="Go to Icebergs" /></Link>
 
         <Image
         style={styles.image1}

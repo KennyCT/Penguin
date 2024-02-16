@@ -20,7 +20,7 @@ export default function TabTwoScreen() {
         console.log(currentOffset, Math.abs(currentOffset));
 
         if (direction == 'right' && Math.abs(currentOffset) > 65) {
-          router.replace('/(tabs)/home');
+          router.replace('/tabs/home');
         }
 
       }}
@@ -29,7 +29,7 @@ export default function TabTwoScreen() {
     <View style={styles.container}>
       
       <Text style={styles.title}>Icebergs</Text>
-      <Link href="/(tabs)/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>
+      <Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>
 
       <Image
         style={styles.image1}

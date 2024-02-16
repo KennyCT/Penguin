@@ -21,7 +21,7 @@ function CustomTabBar() {
     <View style={styles.bottomcontent}>
 
       <View style={{flexDirection: "row", }}>
-        <TabLink name="home" href="/(tabs)/home">
+        <TabLink name="home" href="/tabs/home">
           {({ focused }) => (
             <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
               Home
@@ -29,7 +29,7 @@ function CustomTabBar() {
           )}
         </TabLink>
 
-        <TabLink name="iceberg" href="/(tabs)/iceberg">
+        <TabLink name="iceberg" href="/tabs/iceberg">
           {({ focused }) => (
             <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
               Icebergs
@@ -37,7 +37,7 @@ function CustomTabBar() {
           )}
         </TabLink>
 
-        <TabLink name="three" href="/(tabs)/three">
+        <TabLink name="igloo" href="/tabs/igloo">
           {({ focused }) => (
             <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
               Igloos
