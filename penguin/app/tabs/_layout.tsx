@@ -1,5 +1,6 @@
 import { Link, Navigator, Slot } from "expo-router";
 import { View, Text, StyleSheet, Pressable, ViewStyle, Image } from "react-native";
+
 //import Icon from "@/components/Icon";
 //import ICONS from '@/components/Icon';
 //import Icon from 'react-native-vector-icons/FontAwesome';
@@ -94,10 +95,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "#191A20",
-    paddingVertical: 30,
+    //paddingVertical: 30,
     borderBottomColor: "#D8D8D8",
     borderBottomWidth: 1,
-    height: 100,
+    paddingVertical: 20,
+    height: 85,
     width: '100%',
     //borderColor: 'red',
     //borderWidth: 1,
@@ -108,6 +110,5 @@ const styles = StyleSheet.create({
     //borderColor: 'red',
     //borderWidth: 1,
     paddingHorizontal: 30,
-    paddingBottom: 170,
   }
 });
