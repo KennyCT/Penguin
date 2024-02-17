@@ -1,13 +1,16 @@
 import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
-
 import { Link, router } from 'expo-router';
 
-var AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
+import LoginScreen from '@/app/login/AppLogin'
+import LogoutScreen from '@/app/login/AppLogout'
+import { loginStatusHook } from '@/app/index'
 
 export default function TabOneScreen() {
+
+  const [loginStatus, setLoginStatus] = loginStatusHook('');
+
   return (
     
       <ScrollView 
@@ -31,14 +34,15 @@ export default function TabOneScreen() {
 
       <View style={styles.container}>
 
+        <Text style={styles.title}>You are LOGGED IN</Text>
+
+        <LogoutScreen loginStatus={loginStatus} setLoginStatus={setLoginStatus}></LogoutScreen>
+
         <Text style={styles.title}>Home Screen.</Text>
         <Link href="/tabs/iceberg" asChild><Button onPress={() => console.log("pressed")} title="Go to Icebergs" /></Link>
-        <Link href="/" asChild><Button onPress={() => console.log("pressed")} title="Go to Index" /></Link>
+        {/*<Link href="/" asChild><Button onPress={() => console.log("pressed")} title="Go to Index" /></Link>*/}
 
-        <Image
-        style={styles.image1}
-        source={require('@/assets/images/home_fun.jpg')}
-        />
+        <Image style={styles.image1} source={require('@/assets/images/home_fun.jpg')} />
 
       </View>
      
@@ -54,21 +58,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '100%',
-    //backgroundColor: 'red',
-  },
-  scrollcontainer: {
-    flex: 1
+    minHeight: '20%',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  /*
-  scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
-  },*/
   text: {
     fontSize: 42,
   },

@@ -1,6 +1,5 @@
 import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 import { Link, router } from 'expo-router';
@@ -31,10 +30,7 @@ export default function TabTwoScreen() {
       <Text style={styles.title}>Icebergs</Text>
       <Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>
 
-      <Image
-        style={styles.image1}
-        source={require('@/assets/images/iceberg_fun.png')}
-      />
+      <Image style={styles.image1} source={require('@/assets/images/iceberg_fun.png')} />
 
     </View>
 

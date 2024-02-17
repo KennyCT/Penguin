@@ -1,6 +1,5 @@
 import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import HomeButton from '@/components/HomeButton'
 
@@ -23,7 +22,7 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
                   style={styles.image1}
               />          
               <Image
-                  source={require("@/assets/hero3.jpg")}
+                  source={require("@/assets/hero2.jpg")}
                   style={styles.image2}
               />          
               <Image
@@ -31,7 +30,7 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
                   style={styles.image3}
               />          
               <Image
-                  source={require("@/assets/hero2.jpg")}
+                  source={require("@/assets/hero4.jpg")}
                   style={styles.image4}
               />
           </View>        
@@ -46,11 +45,7 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
                   <Text style={{ fontSize: 16, color: "white", marginVertical: 4}}>Connect with members from your school community.</Text>
               </View>   
 
-              <HomeButton
-                  title="Sign Up"
-                  onPress={() => console.log("signup press")}
-                  style={{ marginTop: 22, width: "100%" }}
-              />      
+              <HomeButton title="Sign Up" onPress={() => console.log("signup press")} style={{ marginTop: 22, width: "100%" }} />      
 
               <View style={{ flexDirection: "row", marginTop: 12, justifyContent: "center" }}>
                   <Pressable onPress={handleInputChange} >
