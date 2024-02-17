@@ -17,22 +17,10 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
   
       <View style={{ flex: 1 }}>
           <View>
-              <Image
-                  source={require("@/assets/hero1.jpg")}
-                  style={styles.image1}
-              />          
-              <Image
-                  source={require("@/assets/hero2.jpg")}
-                  style={styles.image2}
-              />          
-              <Image
-                  source={require("@/assets/hero3.jpg")}
-                  style={styles.image3}
-              />          
-              <Image
-                  source={require("@/assets/hero4.jpg")}
-                  style={styles.image4}
-              />
+              <Image source={require("@/assets/hero1.jpg")} style={styles.image1} />          
+              <Image source={require("@/assets/hero2.jpg")} style={styles.image2} />          
+              <Image source={require("@/assets/hero3.jpg")} style={styles.image3} />          
+              <Image source={require("@/assets/hero4.jpg")} style={styles.image4} />
           </View>        
 
           {/* content  */}    
@@ -52,6 +40,7 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
                       <Text style={{ fontSize: 16, color: "white", fontWeight: "bold", marginLeft: 4 }}>Login</Text>
                   </Pressable>                    
               </View>     
+              
 
           </View>
 

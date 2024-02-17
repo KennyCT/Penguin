@@ -1,9 +1,17 @@
 import { Link, Navigator, Slot } from "expo-router";
-import { View, Text, StyleSheet, Pressable, ViewStyle } from "react-native";
+import { View, Text, StyleSheet, Pressable, ViewStyle, Image } from "react-native";
+//import Icon from "@/components/Icon";
+//import ICONS from '@/components/Icon';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+//import Icon from 'react-native-vector-icons/Ionicons';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 export const unstable_settings = {
   initialRouteName: "home",
 };
+
+// {/*<Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>Home</Text>*/}
 
 export default function Layout() {
   return (
@@ -19,33 +27,24 @@ export default function Layout() {
 function CustomTabBar() {
   return (
     <View style={styles.bottomcontent}>
-
-      <View style={{flexDirection: "row", }}>
         <TabLink name="home" href="/tabs/home">
-          {({ focused }) => (
-            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
-              Home
-            </Text>
+          {({ focused }) => (    
+           //<FontAwesomeIcon style={[styles.icon, { opacity: focused ? 1 : 0.5 }]} name="home" size={30} color="white" />
+           <EntypoIcon style={[styles.icon, { opacity: focused ? 1 : 0.5 }]} name="home" size={30} color="white" />
           )}
         </TabLink>
 
         <TabLink name="iceberg" href="/tabs/iceberg">
           {({ focused }) => (
-            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
-              Icebergs
-            </Text>
+              <FontAwesomeIcon style={[styles.icon, { opacity: focused ? 1 : 0.5 }]} name="icicles" size={30} color="white" />
           )}
         </TabLink>
 
         <TabLink name="igloo" href="/tabs/igloo">
           {({ focused }) => (
-            <Text style={[styles.link, { opacity: focused ? 1 : 0.5 }]}>
-              Igloos
-            </Text>
+              <FontAwesomeIcon style={[styles.icon, { opacity: focused ? 1 : 0.5 }]} name="igloo" size={30} color="white" />
           )}
         </TabLink>
-
-      </View>
     </View>
     
   );
@@ -57,7 +56,7 @@ function useIsTabSelected(name: string): boolean {
   return current.name === name;
 }
 
-function TabLink({
+function TabLink ({
   children,
   name,
   href,
@@ -95,8 +94,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "#191A20",
-    paddingVertical: 40,
+    paddingVertical: 30,
     borderBottomColor: "#D8D8D8",
     borderBottomWidth: 1,
+    height: 100,
+    width: '100%',
+    //borderColor: 'red',
+    //borderWidth: 1,
+    alignContent: 'center',
+
+  },
+  icon: {
+    //borderColor: 'red',
+    //borderWidth: 1,
+    paddingHorizontal: 30,
+    paddingBottom: 170,
   }
 });
