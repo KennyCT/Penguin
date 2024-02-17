@@ -1,4 +1,4 @@
-import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image } from 'react-native';
+import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, TextInput, TouchableOpacity, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
@@ -16,11 +16,7 @@ export default function Index() {
 
   if (loginStatus == 'false') {
     return (
-        <View style={styles.container}>
-          <Text style={styles.title}>You are LOGGED OUT</Text>
-          <Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home (tabs)" /></Link>
-          <LoginScreen loginStatus={loginStatus} setLoginStatus={setLoginStatus}></LoginScreen>
-        </View>
+        <LoginScreen loginStatus={loginStatus} setLoginStatus={setLoginStatus}></LoginScreen>
     );
   }
   else {
@@ -45,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '100%',
-    //backgroundColor: 'red',
   },
   scrollcontainer: {
     flex: 1
@@ -54,16 +49,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  /*
-  scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
-  },*/
   text: {
     fontSize: 42,
-  },
-  image1: {
-    width: 250,
-    height: 200
   }
+
 });

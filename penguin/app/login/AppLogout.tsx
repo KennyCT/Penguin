@@ -7,9 +7,6 @@ import { Link, router } from 'expo-router';
 
 import React, { useCallback } from 'react'
 
-import { getLoggedIn, setLoggedIn } from '@/app/index';
-
-
 export default function LogoutScreen({loginStatus, setLoginStatus}) {
 
   const handleInputChange = useCallback(event => {
