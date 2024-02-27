@@ -4,6 +4,9 @@ import { Text, View } from '@/components/Themed';
 
 import { Link, router } from 'expo-router';
 
+import IcebergNav from '@/app/tabs/iceberg_view/iceberg_nav'
+import IcebergView from '@/app/tabs/iceberg_view/iceberg_view';
+
 export default function TabTwoScreen() {
   return (
     <ScrollView 
@@ -26,11 +29,14 @@ export default function TabTwoScreen() {
     >
 
     <View style={styles.container}>
-      
-      <Text style={styles.title}>Icebergs</Text>
-      <Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>
+      {/*<Text>hello?</Text>*/}
+      {/*<Text style={styles.title}>Icebergs...</Text>*/}
+     
+      <IcebergNav></IcebergNav>
+      <IcebergView></IcebergView>
+      {/*<Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>*/}
 
-      <Image style={styles.image1} source={require('@/assets/images/iceberg_fun.png')} />
+      {/*<Image style={styles.image1} source={require('@/assets/images/iceberg_fun.png')} />*/}
 
     </View>
 
