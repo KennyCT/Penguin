@@ -29,16 +29,21 @@ export default function TabTwoScreen() {
     >
 
     <View style={styles.container}>
-      {/*<Text>hello?</Text>*/}
-      {/*<Text style={styles.title}>Icebergs...</Text>*/}
-     
-      <IcebergNav></IcebergNav>
-      <IcebergView></IcebergView>
-      {/*<Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>*/}
 
-      {/*<Image style={styles.image1} source={require('@/assets/images/iceberg_fun.png')} />*/}
+        <View style={styles.containerNav}>
+          <IcebergNav></IcebergNav>
+        </View>
+
+        <Text>XYZ</Text>
+
+        <View style={styles.container2}>
+          <IcebergView></IcebergView>
+        </View>     
 
     </View>
+
+    {/*<Link href="/tabs/home" asChild><Button onPress={() => console.log("pressed")} title="Go to Home" /></Link>*/}
+    {/*<Image style={styles.image1} source={require('@/assets/images/iceberg_fun.png')} />*/}
 
   </ScrollView>
   );
@@ -46,9 +51,25 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexGrow: 1,
+    //backgroundColor: 'red',
+    borderColor: 'orange',
+    borderWidth: '3px',
+  },
+  container2: {
+    //flex: 1,
+    //alignItems: 'flex-start',
+    backgroundColor: 'purple',
+  },
+  containerNav: {
+    //flexGrow: 1,
+    //flex: 0,
+    //marginTop: 300,
+    //alignItems: 'flex-start',
+    backgroundColor: 'pink',
+    borderColor: 'pink',
+    borderWidth: '5px',
+
   },
   title: {
     fontSize: 20,
