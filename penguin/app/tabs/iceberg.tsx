@@ -34,7 +34,7 @@ export default function TabTwoScreen() {
           <IcebergNav></IcebergNav>
         </View>
 
-        <Text>XYZ</Text>
+        {/*<Text>XYZ</Text>*/}
 
         <View style={styles.container2}>
           <IcebergView></IcebergView>
@@ -53,22 +53,22 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     //backgroundColor: 'red',
-    borderColor: 'orange',
-    borderWidth: '3px',
+    //borderColor: 'orange',
+    //borderWidth: '3px',
   },
   container2: {
     //flex: 1,
     //alignItems: 'flex-start',
-    backgroundColor: 'purple',
+    //backgroundColor: 'purple',
   },
   containerNav: {
     //flexGrow: 1,
     //flex: 0,
     //marginTop: 300,
     //alignItems: 'flex-start',
-    backgroundColor: 'pink',
-    borderColor: 'pink',
-    borderWidth: '5px',
+    //backgroundColor: 'pink',
+    //borderColor: 'pink',
+    //borderWidth: '5px',
 
   },
   title: {

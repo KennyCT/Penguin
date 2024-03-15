@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     //top: 0,
     width: '100%',
     //marginTop: 60,
-    paddingTop: 60,
+    paddingTop: 40,
     flex: 0,
   },
   leftContainer: {
