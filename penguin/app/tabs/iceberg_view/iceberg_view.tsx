@@ -28,6 +28,15 @@ export default function IcebergView() {
     }
   }
 
+  toggleFilterFrat = function() {
+    console.log("Toggled to ", !opacityFrats);
+    setOpacityFrats(!opacityFrats);
+  }
+
+  const onTagUpdate = () => {
+    console.log("a");
+  }
+
 
   return (
     
@@ -45,7 +54,7 @@ export default function IcebergView() {
           <Text style={[styles.tag, {'opacity':` ${opacityClubs ? 1 : 0.5}`}]}>clubs</Text>
         </Pressable>
         
-        <Pressable style={styles.tag_group} onPressIn={() => setOpacityFrats(!opacityFrats) }>
+        <Pressable style={styles.tag_group} onPressIn={() => toggleFilterFrat()  }>
           <Text style={[styles.tagCheckBox, {'backgroundColor':` ${opacityFrats ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}`}]}></Text>
           <Text style={[styles.tag, {'opacity':` ${opacityFrats ? 1 : 0.5}`}]}>frats</Text>
         </Pressable>
@@ -62,34 +71,39 @@ export default function IcebergView() {
 
       </View>
 
-     
+     {/* {'display': ` ${opacityFrats ? 'none' : 'none'}`}, {'marginTop': ` ${opacityFrats ? 200 : 0}`}*/}
+
       <View style={styles.post_container}>
       <ScrollView style={{width: '100%'}} contentContainerStyle={styles.post_sv_container} bounces={false} centerContent={true} showsVerticalScrollIndicator={false}>
-        <View style={styles.post}>
-          <Text>Post title1</Text>
+        <View style={[styles.post, opacityFrats ? styles.showpost : styles.hidepost]}>
+          <Text style={styles.post_tag}>frats</Text>
+          <Text style={styles.post_title}>Post title1</Text>
           <Text>Post author</Text>
           <Text>Post content</Text>
           <Text>Post media</Text>
           <Text>Post date</Text>
         </View>
-        <View style={styles.post}>
-          <Text>Post title2</Text>
+
+        <View style={[styles.post, opacityClubs ? styles.showpost : styles.hidepost]}>
+          <Text style={styles.post_tag}>clubs</Text>
+          <Text style={styles.post_title}>Post title2</Text>
         </View>
-        <View style={styles.post}>
-          <Text>Post title3</Text>
+
+        <View style={[styles.post, opacityFrats ? styles.showpost : styles.hidepost]}>
+          <Text style={styles.post_tag}>frats</Text>
+          <Text style={styles.post_title}>Post title3</Text>
         </View>
-        <View style={styles.post}>
-          <Text>Post title4</Text>
+
+        <View style={[styles.post, opacityOrgs ? styles.showpost : styles.hidepost]}>
+          <Text style={styles.post_tag}>orgs</Text>
+          <Text style={styles.post_title}>Post title4</Text>
         </View>
-        <View style={styles.post}>
-          <Text>Post title5</Text>
+
+        <View style={[styles.post, opacityOther ? styles.showpost : styles.hidepost]}>
+          <Text style={styles.post_tag}>other</Text>
+          <Text style={styles.post_title}>Post title5</Text>
         </View>
-        <View style={styles.post}>
-          <Text>Post title6</Text>
-        </View>
-        <View style={styles.post}>
-          <Text>Post title7</Text>
-        </View>
+
         </ScrollView>
       </View>
       
@@ -102,6 +116,27 @@ export default function IcebergView() {
 
 
 const styles = StyleSheet.create({
+
+  post_tag: {
+    position: 'absolute',
+    left: 0,
+    padding: 2,
+    margin: 5,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#ccc'
+  },
+
+  post_title: {
+    marginTop: 30
+  },
+
+  hidepost: {
+    display: 'none',
+  },
+  showpost: {
+    display: 'flex',
+  },
 
   post_sv_container: {
     alignContent: 'center',
@@ -123,13 +158,15 @@ const styles = StyleSheet.create({
 
   post: {
     backgroundColor: '#292826',
-    height: 100,
+    height: 180,
     width: '90%',
     borderRadius: 8,
     alignContent: 'center',
     alignItems: 'center', 
     paddingHorizontal: 20,
     marginBottom: 20,
+    //hidden: 0,
+    //display: 'none',
   },
 
   tags: {
