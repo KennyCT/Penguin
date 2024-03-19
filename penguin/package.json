@@ -41,7 +41,8 @@
     "react-native-web": "~0.19.6",
     "sequelize-typescript": "^2.1.6",
     "ts-node": "^10.9.2",
-    "use-gesture": "^1.0.0"
+    "use-gesture": "^1.0.0",
+    "expo-linear-gradient": "~12.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
