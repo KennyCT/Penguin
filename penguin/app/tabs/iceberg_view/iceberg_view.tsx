@@ -32,7 +32,7 @@ export default function IcebergView() {
 
   toggleFilter = function(filterType) {
     setLoadingBar(true);
-    //console.log("Toggled to ", !opacityFrats);
+    console.log("Toggling ", filterType);
   
     setTimeout(function() {
       if (filterType == 'frats') {
@@ -97,11 +97,11 @@ export default function IcebergView() {
       <ScrollView style={{width: '100%'}} contentContainerStyle={styles.post_sv_container} bounces={false} centerContent={true} showsVerticalScrollIndicator={false}>
         <View style={[styles.post, opacityFrats ? styles.showpost : styles.hidepost]}>
           <Text style={styles.post_tag}>frats</Text>
-          <Text style={styles.post_title}>Post title1</Text>
-          <Text>Post author</Text>
-          <Text>Post content</Text>
+          <Text style={styles.post_title}>This is a post title about my frat</Text>
+          <Text style={styles.post_author}>@kenny.conteras</Text>
+          <Text style={styles.post_content}>My fraternity is recruiting new members.</Text>
           <Text>Post media</Text>
-          <Text>Post date</Text>
+          <Text style={styles.post_date}>3h ago</Text>
         </View>
 
         <View style={[styles.post, opacityClubs ? styles.showpost : styles.hidepost]}>
@@ -154,7 +154,33 @@ const styles = StyleSheet.create({
   },
 
   post_title: {
-    marginTop: 30
+    marginTop: 40,
+    fontSize: 20,
+  },
+
+  post_content: {
+    marginTop: 10,
+    fontSize: 14,
+    //textAlign: 'left',
+    //height: 80,
+    //flex: 1,
+    //flexWrap: 'wrap',
+    //flexShrink: 1,
+    //alignContent: 'left'
+  },
+
+  post_author: {
+    position: 'absolute',
+    left: 0,
+    marginTop: 8,
+    marginLeft: 50,
+  },
+
+  post_date: {
+    position: 'absolute',
+    right: 0,
+    padding: 2,
+    margin: 5,
   },
 
   hidepost: {
@@ -183,6 +209,10 @@ const styles = StyleSheet.create({
   },
 
   post: {
+    //flexShrink: 1,
+    //flexWrap: 1,
+    //flexDirection: 'row',
+    //flexShrink: 1,
     backgroundColor: '#292826',
     height: 180,
     width: '90%',
