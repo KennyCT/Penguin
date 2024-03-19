@@ -1,4 +1,4 @@
-import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, TouchableOpacity, TouchableWithoutFeedback, FlatList } from 'react-native';
+import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, TouchableOpacity, TouchableWithoutFeedback, FlatList, ActivityIndicator } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
@@ -20,6 +20,8 @@ export default function IcebergView() {
   const [ opacityOrgs, setOpacityOrgs ] = useState(true);
   const [ opacityOther, setOpacityOther ] = useState(true);
 
+  const [ loadingBar, setLoadingBar ] = useState(false);
+
   swapColor = function(option) {
     if (option == '#fff') {
       setColor('#000');
@@ -28,9 +30,23 @@ export default function IcebergView() {
     }
   }
 
-  toggleFilterFrat = function() {
-    console.log("Toggled to ", !opacityFrats);
-    setOpacityFrats(!opacityFrats);
+  toggleFilter = function(filterType) {
+    setLoadingBar(true);
+    //console.log("Toggled to ", !opacityFrats);
+  
+    setTimeout(function() {
+      if (filterType == 'frats') {
+        setOpacityFrats(!opacityFrats);
+      } else if (filterType == 'clubs') {
+        setOpacityClubs(!opacityClubs)
+      } else if (filterType == 'orgs') {
+        setOpacityOrgs(!opacityOrgs);
+      } else {
+        setOpacityOther(!opacityOther);
+      }
+      setLoadingBar(false);
+    }, 300);
+
   }
 
   const onTagUpdate = () => {
@@ -49,26 +65,30 @@ export default function IcebergView() {
 
       <View style={styles.tags}>
 
-        <Pressable style={styles.tag_group} onPressIn={() => setOpacityClubs(!opacityClubs) }>
+        <Pressable style={styles.tag_group} onPressIn={() => toggleFilter('clubs') }>
           <Text style={[styles.tagCheckBox, {'backgroundColor':` ${opacityClubs ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}`}]}></Text>
           <Text style={[styles.tag, {'opacity':` ${opacityClubs ? 1 : 0.5}`}]}>clubs</Text>
         </Pressable>
         
-        <Pressable style={styles.tag_group} onPressIn={() => toggleFilterFrat()  }>
+        <Pressable style={styles.tag_group} onPressIn={() => toggleFilter('frats')  }>
           <Text style={[styles.tagCheckBox, {'backgroundColor':` ${opacityFrats ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}`}]}></Text>
           <Text style={[styles.tag, {'opacity':` ${opacityFrats ? 1 : 0.5}`}]}>frats</Text>
         </Pressable>
 
-        <Pressable style={styles.tag_group} onPressIn={() => setOpacityOrgs(!opacityOrgs) }>
+        <Pressable style={styles.tag_group} onPressIn={() => toggleFilter('orgs') }>
           <Text style={[styles.tagCheckBox, {'backgroundColor':` ${opacityOrgs ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}`}]}></Text>
           <Text style={[styles.tag, {'opacity':` ${opacityOrgs ? 1 : 0.5}`}]}>orgs</Text>
         </Pressable>
 
-        <Pressable style={styles.tag_group} onPressIn={() => setOpacityOther(!opacityOther) }>
+        <Pressable style={styles.tag_group} onPressIn={() => toggleFilter('other') }>
           <Text style={[styles.tagCheckBox, {'backgroundColor':` ${opacityOther ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'}`}]}></Text>
           <Text style={[styles.tag, {'opacity':` ${opacityOther ? 1 : 0.5}`}]}>other</Text>
         </Pressable>
 
+      </View>
+
+      <View style={[styles.loadingbar]}>
+        <ActivityIndicator size="large" style={[loadingBar ? styles.showpost : styles.hidepost]} />
       </View>
 
      {/* {'display': ` ${opacityFrats ? 'none' : 'none'}`}, {'marginTop': ` ${opacityFrats ? 200 : 0}`}*/}
@@ -116,6 +136,12 @@ export default function IcebergView() {
 
 
 const styles = StyleSheet.create({
+  loadingbar: {
+    width: '100%',
+    alignContent: 'center',
+    alignItems: 'center', 
+  },
+
 
   post_tag: {
     position: 'absolute',
