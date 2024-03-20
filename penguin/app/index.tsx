@@ -26,8 +26,7 @@ export default function Index() {
     );
   }
   else if (loginStatus == 'true') {
-    //router.replace('/tabs/home');
-    router.replace('/login/AppSigninClean');
+    router.replace('/tabs/home');
     /*
     return (
       <View style={styles.container}>
