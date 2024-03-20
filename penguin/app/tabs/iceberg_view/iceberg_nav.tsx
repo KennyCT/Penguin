@@ -14,14 +14,14 @@ export default function IcebergNav() {
     <View style={styles.leftContainer}>
       <Link href="/tabs/home" asChild>
         <Pressable style={styles.browse_igloos_button} onPress={() => console.log("browse igloos pressed")}>
-          <Ionicon name="chevron-back" size={30} color="#007AFF" style={styles.icon}/>
+          <Ionicon name="chevron-back" size={30} color="#007AFF"/>
           <Text style={styles.navbarText}>Back</Text>  
         </Pressable>  
       </Link>
     </View>
 
     <View style={styles.rightContainer}>
-    <Pressable style={styles.search_button} onPress={() => console.log("search pressed")}>
+      <Pressable style={styles.search_button} onPress={() => console.log("search pressed")}>
         <Text style={styles.navbarText}>Search...</Text> 
       </Pressable>    
     </View>
@@ -33,9 +33,6 @@ export default function IcebergNav() {
 }
 
 const styles = StyleSheet.create({
-  icon: {
-    
-  },
   navbarText: {
     color: '#007AFF',
     fontSize: 17,
@@ -45,7 +42,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    //backgroundColor: 'blue',
   },
   search_button: {
     flex: 1,
@@ -59,17 +57,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     //backgroundColor: 'blue',
-    position: 'absolute',
-    top: 0,
+    //position: 'absolute',
+    //top: 0,
     width: '100%',
-    paddingTop: 60,
+    //marginTop: 60,
+    paddingTop: 40,
     flex: 0,
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    //backgroundColor: 'green'
+    alignItems: 'center',
+    //marginLeft: 10,
+    //backgroundColor: 'pink'
   },
   rightContainer: {
     flex: 1,

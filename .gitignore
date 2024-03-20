@@ -2,3 +2,4 @@ node_modules
 penguin/package.json
 penguin/package-lock.json
 penguin/assets/omw.gif
+.expo

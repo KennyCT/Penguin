@@ -16,8 +16,6 @@ export function loginStatusHook(initV) {
 
 export default function Index() {
 
-   
-
   const [loginStatus, setLoginStatus] = loginStatusHook('false');
 
   console.log("login status", {loginStatus});
