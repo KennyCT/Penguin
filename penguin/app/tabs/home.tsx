@@ -7,9 +7,10 @@ import LoginScreen from '@/app/login/AppLogin'
 import LogoutScreen from '@/app/login/AppLogout'
 import { loginStatusHook } from '@/app/index'
 
-export default function TabOneScreen() {
+import HomeTop from '@/app/tabs/home_view/home_top'
+import HomeBottom from '@/app/tabs/home_view/home_bottom';
 
-  const [loginStatus, setLoginStatus] = loginStatusHook('');
+export default function TabOneScreen() {
 
   return (
     
@@ -34,17 +35,29 @@ export default function TabOneScreen() {
 
       <View style={styles.container}>
 
+        <View style={styles.containerNav}>
+          <HomeTop></HomeTop>
+        </View>
+
+        <View style={styles.container2}>
+          <HomeBottom></HomeBottom>
+        </View>     
+
+      </View>
+
+      {/*
+      <View style={styles.container}>
+
         <Text style={styles.title}>You are LOGGED IN</Text>
 
         <LogoutScreen loginStatus={loginStatus} setLoginStatus={setLoginStatus}></LogoutScreen>
 
         <Text style={styles.title}>Home Screen.</Text>
         <Link href="/tabs/iceberg" asChild><Button onPress={() => console.log("pressed")} title="Go to Icebergs" /></Link>
-        {/*<Link href="/" asChild><Button onPress={() => console.log("pressed")} title="Go to Index" /></Link>*/}
 
         <Image style={styles.image1} source={require('@/assets/images/home_fun.jpg')} />
 
-      </View>
+      </View>*/}
      
       </ScrollView>
     
@@ -55,10 +68,14 @@ export default function TabOneScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '20%',
+    flexGrow: 1,
+
+  },
+  container2: {
+
+  },
+  containerNav: {
+
   },
   title: {
     fontSize: 20,
