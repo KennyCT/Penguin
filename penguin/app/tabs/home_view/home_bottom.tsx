@@ -10,13 +10,57 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 
 var myTest = true;
 
-function getMarginRandom() {
-  return Math.random() * 150; 
+var testList = []
+
+function getMarginRandom(max, id) {
+  var breakloop = false;
+
+  var r = 0;
+
+  var loops = 0;
+
+  while (breakloop == false) {
+    r = Math.random() * max;
+
+    breakloop = true;
+
+    let i = 0;
+    while (i < testList.length) {
+        loops += 1;
+
+        if (loops > 401) {
+          console.log("***** HAD TO BREAK *****");
+          break;
+        }
+
+        var ans = Math.abs(r - testList[i][1]);
+        console.log("r=", r, "ans=", ans)
+        if (ans < 40 && id != testList[i][0]) {
+          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!! < LIMIT !!!!!!!!!!!!!!!!!!!!!!!!!!!");
+          breakloop = false;
+          i = testList.length;
+          break;
+        }
+        i++;
+    }
+
+
+    if (loops > 401) {
+      console.log("***** HAD TO BREAK *****");    
+      break;
+    }
+
+
+  } 
+
+  testList.push([id, r]);
+  console.log(testList);
+  return r;
 }
 
 export default function HomeBottom() {
 
-  const image = { uri: "https://docs.expo.dev/static/images/tutorial/splash.png" };
+  const image = { uri: "https://docs.expo.dev/static/images/tutorial/splash.png" };  
 
   return (
     
@@ -28,9 +72,10 @@ export default function HomeBottom() {
         </View>
 
         <View style={styles.iceberg_list}>
-        <ScrollView style={{width: '100%'}} contentContainerStyle={styles.iceberg_sv_container} horizontal={false} bounces={false} centerContent={true} showsVerticalScrollIndicator={false}>
-          
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom(), position: 'absolute', left: 0, }]} >
+       
+       {/* <ScrollView style={{width: '100%'}} contentContainerStyle={styles.iceberg_sv_container} horizontal={false} bounces={false} centerContent={true} showsVerticalScrollIndicator={false}>
+          */}
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'RPI'), marginTop: getMarginRandom(400, 'RPI')} ]} >
             <Link href="/tabs/iceberg" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/rpi.jpeg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -40,7 +85,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom() }]} >
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'MIT'), marginTop: getMarginRandom(400, 'MIT')} ]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/mit.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -50,7 +95,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom() }]} >
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Troy'), marginTop: getMarginRandom(400, 'Troy')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/troy.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -60,7 +105,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom() }]} >
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'NYC'), marginTop: getMarginRandom(400, 'NYC')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/nyc.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -70,7 +115,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom() }]} >
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Mass.'), marginTop: getMarginRandom(400, 'Mass.')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/mass.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -80,18 +125,18 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { marginLeft: getMarginRandom(), marginRight: getMarginRandom() }]} >
+          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'TX'), marginTop: getMarginRandom(400, 'TX')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/tx.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
                   <Text style={styles.iceberg_item_text}>TX</Text>
-                </ImageBackground>
+                </ImageBackground> 
               </Pressable>
             </Link>
           </View>
 
 
-          </ScrollView>
+          {/*</ScrollView>*/}
         </View>
       </View>
     </View>
@@ -148,6 +193,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '100%',
     //height: '80%',
+    height: 500,  
     borderWidth: 2,
     //borderColor: 'pink',
     //alignContent: 'center',
