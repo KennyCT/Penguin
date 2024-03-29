@@ -10,55 +10,94 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 
 var myTest = true;
 
-var testList = []
+//var testList = []
 
-function getMarginRandom(max, id) {
+const displayMapL = new Map();
+displayMapL.set('none', 0);
+
+const displayMapT = new Map();
+displayMapT.set('none', 0);
+
+const displayMapCount = new Map();
+displayMapCount.set('none', 0);
+
+import useMyFirstCustomHook from '@/app/tabs/home_view/selected_test';
+
+function yourComponent() {
+  const [count, setCount] = useMyFirstCustomHook(1);
+  
+  console.log(count);
+}
+
+//yourComponent();
+//const { count, setCount } = useMyFirstCustomHook();
+//console.log(count);
+
+
+function getMarginRandom(max, id, direction) {
   var breakloop = false;
 
   var r = 0;
 
   var loops = 0;
 
-  while (breakloop == false) {
-    r = Math.random() * max;
+  //r = Math.random() * max;
+  var maxMap = 0;
+  if (direction == 'L') {
 
-    breakloop = true;
-
-    let i = 0;
-    while (i < testList.length) {
-        loops += 1;
-
-        if (loops > 401) {
-          console.log("***** HAD TO BREAK *****");
-          break;
-        }
-
-        var ans = Math.abs(r - testList[i][1]);
-        console.log("r=", r, "ans=", ans)
-        if (ans < 40 && id != testList[i][0]) {
-          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!! < LIMIT !!!!!!!!!!!!!!!!!!!!!!!!!!!");
-          breakloop = false;
-          i = testList.length;
-          break;
-        }
-        i++;
+    if (displayMapL.has(id)) {
+      return displayMapL.get(id);
     }
 
+    maxMap = Math.max(...displayMapL.values());
+    r = maxMap + 45;
+    displayMapL.set(id, r);
 
-    if (loops > 401) {
-      console.log("***** HAD TO BREAK *****");    
-      break;
+  } else {
+
+    if (displayMapT.has(id)) {
+      return displayMapT.get(id);
     }
 
+    maxMap = Math.max(...displayMapT.values());
+    r = maxMap + 60;
+    displayMapT.set(id, r);
 
-  } 
+  }
 
-  testList.push([id, r]);
-  console.log(testList);
+  if (maxMap > 200) {
+    displayMapL.clear();
+    displayMapL.set('none', 0);
+  }
+  
+
+
+
+  //map.put(id, )
+
+    
+
   return r;
 }
 
+
+
+
 export default function HomeBottom() {
+
+  const [ activeIceberg, setActiveIceberg ] = useState('RPI');
+
+  
+  function setIceberg(id) {
+    console.log("received ", id);
+
+    setActiveIceberg(id);
+
+    setTimeout(function() {
+      router.replace("/tabs/iceberg");
+    }, 300);
+    
+  }
 
   const image = { uri: "https://docs.expo.dev/static/images/tutorial/splash.png" };  
 
@@ -69,13 +108,14 @@ export default function HomeBottom() {
         <View style={styles.iceberg_title}>
           <Text style={{fontSize: 18, fontWeight: 'bold', paddingLeft: 10, color: 'gray'}}>Welcome to Penguin.</Text>
           <Text style={{fontSize: 23, fontWeight: 'bold', paddingLeft: 10}}>Browse your Icebergs...</Text>
+          <Text style={{fontSize: 16, fontWeight: 'bold', paddingLeft: 10, color: '#007AFF'}}>Currently in {activeIceberg}</Text>
         </View>
 
         <View style={styles.iceberg_list}>
        
        {/* <ScrollView style={{width: '100%'}} contentContainerStyle={styles.iceberg_sv_container} horizontal={false} bounces={false} centerContent={true} showsVerticalScrollIndicator={false}>
           */}
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'RPI'), marginTop: getMarginRandom(400, 'RPI')} ]} >
+          <View style={[styles.iceberg, activeIceberg == 'RPI' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'RPI', 'L'), marginTop: getMarginRandom(400, 'RPI', 'T')} ]} >
             <Link href="/tabs/iceberg" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/rpi.jpeg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -85,17 +125,17 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'MIT'), marginTop: getMarginRandom(400, 'MIT')} ]} >
-            <Link href="/tabs/doesnotexist" asChild>
-              <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
+          <View style={[styles.iceberg, activeIceberg == 'MIT' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'MIT', 'L'), marginTop: getMarginRandom(400, 'MIT', 'T')} ]} >
+            {/*<Link href="/tabs/doesnotexist" asChild>*/}
+              <Pressable style={styles.iceberg_img} onPress={() => setIceberg("MIT")}>
                 <ImageBackground source={require("@/assets/images/mit.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
                   <Text style={styles.iceberg_item_text}>MIT</Text>
                 </ImageBackground>
               </Pressable>
-            </Link>
+            {/*</Link>*/}
           </View>
 
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Troy'), marginTop: getMarginRandom(400, 'Troy')}]} >
+          <View style={[styles.iceberg, activeIceberg == 'Troy' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Troy', 'L'), marginTop: getMarginRandom(400, 'Troy', 'T')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/troy.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -105,7 +145,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'NYC'), marginTop: getMarginRandom(400, 'NYC')}]} >
+          <View style={[styles.iceberg, activeIceberg == 'NYC' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'NYC', 'L'), marginTop: getMarginRandom(400, 'NYC', 'T')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/nyc.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -115,7 +155,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Mass.'), marginTop: getMarginRandom(400, 'Mass.')}]} >
+          <View style={[styles.iceberg, activeIceberg == 'Mass.' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'Mass.', 'L'), marginTop: getMarginRandom(400, 'Mass.', 'T')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/mass.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -125,7 +165,7 @@ export default function HomeBottom() {
             </Link>
           </View>
 
-          <View style={[styles.iceberg, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'TX'), marginTop: getMarginRandom(400, 'TX')}]} >
+          <View style={[styles.iceberg, activeIceberg == 'TX' ? styles.border_active : styles.border_inactive, { position: 'absolute', left: 0, marginLeft: getMarginRandom(250, 'TX', 'L'), marginTop: getMarginRandom(400, 'TX', 'T')}]} >
             <Link href="/tabs/doesnotexist" asChild>
               <Pressable style={styles.iceberg_img} onPress={() => console.log("iceberg in home pressed")}>
                 <ImageBackground source={require("@/assets/images/tx.jpg")} style={styles.iceberg_img} imageStyle={{ borderRadius: 100, opacity: 0.75}}>
@@ -162,7 +202,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 100,
     borderStyle: 'solid',
-    borderColor: 'white',
     height: 60,
     width: 60,
     alignItems: 'center',
@@ -170,7 +209,16 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     //backgroundColor: 'purple',
-    
+  },
+
+  border_inactive: {
+    borderColor: 'white',
+    borderWidth: 3,
+  },
+
+  border_active: {
+    borderColor: '#007AFF',
+    borderWidth: 5,
   },
 
   iceberg_item_text: {

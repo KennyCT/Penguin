@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
 
   post_container: {
-    marginTop: 20,
+    marginTop: 0,
     width: '100%',
     height: '80%',
     borderWidth: 2,

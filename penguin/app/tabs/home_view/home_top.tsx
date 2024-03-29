@@ -6,6 +6,8 @@ import { Link, router } from 'expo-router';
 
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+
 import LogoutScreen from '@/app/login/AppLogout'
 
 import { loginStatusHook } from '@/app/index'
@@ -23,8 +25,9 @@ export default function HomeTop() {
     </View>
 
     <View style={styles.rightContainer}>
-      <Pressable style={styles.search_button} onPress={() => console.log("search pressed")}>
-        <Text style={styles.navbarText}>Search...</Text> 
+      <Pressable style={styles.search_button} onPress={() => console.log("join pressed")}>
+        <EntypoIcon name="plus" size={30} color="#007AFF" />
+        <Text style={styles.navbarText}>Join Iceberg</Text> 
       </Pressable>    
     </View>
 
