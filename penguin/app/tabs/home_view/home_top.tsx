@@ -25,10 +25,13 @@ export default function HomeTop() {
     </View>
 
     <View style={styles.rightContainer}>
-      <Pressable style={styles.search_button} onPress={() => console.log("join pressed")}>
-        <EntypoIcon name="plus" size={30} color="#007AFF" />
-        <Text style={styles.navbarText}>Join Iceberg</Text> 
-      </Pressable>    
+      <Link href="/tabs/iceberg_view/iceberg_join" asChild>
+      {/*<Link href="../../modal" asChild>*/}
+        <Pressable style={styles.search_button} onPress={() => console.log("join pressed")}>
+          <EntypoIcon name="plus" size={30} color="#007AFF" />
+          <Text style={styles.navbarText}>Join Iceberg</Text> 
+        </Pressable>   
+      </Link> 
     </View>
 
   </View>
