@@ -13,6 +13,12 @@ import Apploading from 'expo-app-loading'
 // TODO:
 // 1. backend for AppSigninClean
 // 2. RPI iceberg front/back end
+// 3. front/back Signup
+// 4. Home screen
+
+import axios from 'axios';
+import { ActivityIndicator } from 'react-native';
+import { query, response } from 'express';
 
 
 export default function SigninScreen() {
@@ -21,6 +27,62 @@ export default function SigninScreen() {
         email: '',
         password: '',
     });
+
+    const handleInputs = () => {
+        if (form.email == '' || form.password == '') {
+            Alert.alert("No inputs given");
+        }
+        else{
+            Alert.alert("Yes inputs given");
+            //handleSignin(/*form*/);
+        }
+        //handleSignin(/*form*/);
+    }
+
+    //     // const url = 'https://pma.sparkedhost.com/index.php?route=/sql&pos=0&db=s111397_penguin&table=users&server=8';
+    //     // axios
+    //     //     .get(url)
+    //     //     .then(response => {
+    //     //         Alert.alert(response.data.username.);
+    //     //     }).catch(error => {
+    //     //         Alert.alert(error);
+    //     //     })
+    // }
+
+    // const handleSignin = ( /*credentials: {email: string; password: string;}*/ ) => {
+    //     const url = 'https://pma.sparkedhost.com/index.php?route=/sql&pos=0&db=s111397_penguin&table=users&server=8';
+
+    //     form.email = 'shoupm';
+    //     form.password = 'matthew';
+
+    //     axios
+    //     //.post(url, credentials)
+    //     // .then(res) => {
+    //     //     const result = res.status.toString;
+    //     // })
+    //     // .catch(error) => {
+    //     //     Alert.alert(error.JSON());
+    //     // })
+
+    //     .post(url, "SELECT * FROM `users` WHERE username = 'jackh' AND firstname = 'Henry';")
+    //     .then(res => {
+    //         //setForm(res.data.username)
+    //         //Alert.alert(res.data.username);
+    //         Alert.alert('can query');
+    //         if(res.data.username == 'jackh') {
+    //             Alert.alert('found user');
+    //         }
+    //         else{
+    //             Alert.alert('didnt find user');
+    //         }
+
+    //     })
+    //     .catch(err => {
+    //         Alert.alert('cannot query');
+    //     })
+
+    // }
+
 
     let [fontsLoaded] = useFonts({
         'Lobster-Regular': require('./../../assets/fonts/Lobster1.4.otf'),
@@ -47,6 +109,12 @@ export default function SigninScreen() {
                 <Text style={styles.penguinBoxText}>Penguin</Text>
             </View>
 
+            <View style={styles.penguinImageBox}>
+                <Image style={styles.penguinImage} 
+                        source={require('./../../assets/images/pen.png')}>
+                </Image>
+            </View>
+
             <View style={styles.emailBox}>
                 <Text style={styles.emailBoxText}>Email</Text>
                 <TextInput 
@@ -61,7 +129,6 @@ export default function SigninScreen() {
                 </TextInput>
             </View>
 
-
             <View style={styles.passwordBox}>
                 <Text style={styles.passwordBoxText}>Password</Text>
                 <TextInput 
@@ -75,18 +142,20 @@ export default function SigninScreen() {
             </View>
 
             <View style={styles.signInBox}>
-                <TouchableOpacity onPress={() => {Alert.alert("Successful Login")}}>
+                <TouchableOpacity onPress={handleInputs}>
                     <View style={styles.signInBoxBtn}>
                         <Text style={styles.signInBoxText}>Sign In</Text>
                     </View>
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.loginBox}>
-                <TouchableOpacity onPress={() => {Alert.alert("Successful Sign Up") /*router.replace('/login/AppLogin')*/}}>
-                    <Text style={styles.loginBoxText}>Don't have an account?</Text>
+            <View style={styles.signUpBox}>
+                {/* <TouchableOpacity onPress={() => {Alert.alert("Successful Sign Up")}}> */}
+                <TouchableOpacity onPress={() => {router.replace('/login/AppSignupClean')}}>
+                    <Text style={styles.signUpBoxText}>Don't have an account?</Text>
                 </TouchableOpacity>
             </View>
+
 
             {/* <ImageBackground source={require('./../../assets/images/icon.png')} style={styles.icebergPic}>
                     <Text>HELLO</Text>
@@ -128,6 +197,32 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         position: 'absolute'
     },
+    penguinImageBox: {
+        // backgroundColor: 'green', 
+        // width: 300, 
+        // height: 170, 
+        // // paddingHorizontal: 100,
+        // // paddingVertical: 100,
+        // top: 90,
+        // left: 50,
+        // //right: 50,
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+        // position: 'absolute'
+    },
+    penguinImage: {
+        // backgroundColor: 'pink', 
+        // width: 300, 
+        // height: 170, 
+        // // paddingHorizontal: 100,
+        // // paddingVertical: 100,
+        // top: 10,
+        // //left: 50,
+        // //right: 50,
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+        // position: 'absolute'
+    },
     penguinBoxText: {
         fontSize: 46,
         fontWeight: '800',
@@ -148,6 +243,12 @@ const styles = StyleSheet.create({
         // borderRightColor: '#2881D8',
         // borderBottomColor: 'white',
         // borderWidth: 5
+    },
+    backEmailbox: {
+        backgroundColor: 'black', 
+        width: '100%', 
+        height: 100, 
+        top: 240,
     },
     emailBoxText: {
         fontSize: 34,
@@ -197,7 +298,7 @@ const styles = StyleSheet.create({
         color: 'white',
         //fontFamily: 'Nexa-Heavy'
     },
-    loginBox: {
+    signUpBox: {
         backgroundColor: 'transparent', 
         width: 170, 
         height: 20, 
@@ -208,7 +309,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         //borderRadius: 30,
     },
-    loginBoxText: {
+    signUpBoxText: {
         fontSize: 13,
         fontWeight: '800',
         color: 'white',
