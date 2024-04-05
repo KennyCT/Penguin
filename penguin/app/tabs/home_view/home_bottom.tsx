@@ -1,4 +1,4 @@
-import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, ImageBackground, } from 'react-native';
+import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, ImageBackground, Modal, } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
@@ -100,6 +100,7 @@ export default function HomeBottom() {
   }
 
   const image = { uri: "https://docs.expo.dev/static/images/tutorial/splash.png" };  
+
 
   return (
     
