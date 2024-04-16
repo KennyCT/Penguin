@@ -39,6 +39,10 @@ export default function SigninScreen() {
         //handleSignin(/*form*/);
     }
 
+    // const test = () => {
+    //     axios.get()
+    // }
+
     //     // const url = 'https://pma.sparkedhost.com/index.php?route=/sql&pos=0&db=s111397_penguin&table=users&server=8';
     //     // axios
     //     //     .get(url)
@@ -104,6 +108,18 @@ export default function SigninScreen() {
                 colors={['#004C99', 'skyblue', 'white']} 
                 style={styles.entireScreen}>
             </LinearGradient>
+
+            <View style={styles.homeBox}>
+                <TouchableOpacity onPress={() => router.replace('/login/AppLogin')}>
+                <Text style={styles.homeBoxText}>Homepage</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.AdminBox}>
+                <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
+                <Text style={styles.AdminBoxText}>Admin</Text>
+                </TouchableOpacity>
+            </View>
 
             <View style={styles.penguinBox}>
                 <Text style={styles.penguinBoxText}>Penguin</Text>
@@ -183,6 +199,40 @@ const styles = StyleSheet.create({
         height: 32,
         left: 10,
         fontSize: 12
+    },
+    homeBox: {
+        backgroundColor: 'transparent', 
+        width: 90,
+        height: 30,
+        top: 10,
+        left: 10,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    homeBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'white',
+        left: 10,
+        fontFamily: 'Nexa-Heavy'
+    },
+    AdminBox: {
+        backgroundColor: 'transparent', 
+        width: 90,
+        height: 30,
+        top: 10,
+        right: 10,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    AdminBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'white',
+        left: 10,
+        fontFamily: 'Nexa-Heavy'
     },
     penguinBox: {
         backgroundColor: 'transparent', 

@@ -33,7 +33,8 @@ export default function LoginScreen({loginStatus, setLoginStatus}) {
                   <Text style={{ fontSize: 16, color: "white", marginVertical: 4}}>Connect with members from your school community.</Text>
               </View>   
 
-              <HomeButton title="Sign Up" onPress={() => console.log("signup press")} style={{ marginTop: 22, width: "100%" }} />      
+              <HomeButton title="Sign Up" onPress={() => router.replace('/login/AppSigninClean')
+              /*console.log("signup press")*/} style={{ marginTop: 22, width: "100%" }} />      
 
               <View style={{ flexDirection: "row", marginTop: 12, justifyContent: "center" }}>
                   <Pressable onPress={handleInputChange} >

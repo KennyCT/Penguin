@@ -45,6 +45,18 @@ export default function SigninScreen() {
                 style={styles.entireScreen}>
             </LinearGradient>
 
+            <View style={styles.homeBox}>
+                <TouchableOpacity onPress={() => router.replace('/login/AppLogin')}>
+                <Text style={styles.homeBoxText}>Homepage</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.AdminBox}>
+                <TouchableOpacity onPress={() => router.replace('/login/AppLogin')}>
+                <Text style={styles.AdminBoxText}>Admin</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.penguinBox}>
                 <Text style={styles.penguinBoxText}>Penguin</Text>
             </View>
@@ -64,7 +76,7 @@ export default function SigninScreen() {
             </View>
 
             <View style={styles.signUpBox}>
-                <TouchableOpacity onPress={() => {Alert.alert("Successful send verification email")}}>
+                <TouchableOpacity onPress={() => {Alert.alert("Check email listed for verification")}}>
                     <View style={styles.signUpBoxBtn}>
                         <Text style={styles.signUpBoxText}>Send verification email</Text>
                     </View>
@@ -100,6 +112,40 @@ const styles = StyleSheet.create({
         height: 32,
         left: 10,
         fontSize: 12
+    },
+    homeBox: {
+        backgroundColor: 'transparent', 
+        width: 90,
+        height: 30,
+        top: 10,
+        left: 10,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    homeBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'white',
+        left: 10,
+        fontFamily: 'Nexa-Heavy'
+    },
+    AdminBox: {
+        backgroundColor: 'transparent', 
+        width: 90,
+        height: 30,
+        top: 10,
+        right: 10,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    AdminBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'white',
+        left: 10,
+        fontFamily: 'Nexa-Heavy'
     },
     penguinBox: {
         backgroundColor: 'transparent', 
