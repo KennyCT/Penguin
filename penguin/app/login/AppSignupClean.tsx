@@ -76,7 +76,8 @@ export default function SigninScreen() {
             </View>
 
             <View style={styles.signUpBox}>
-                <TouchableOpacity onPress={() => {Alert.alert("Check email listed for verification")}}>
+                {/* <TouchableOpacity onPress={() => {Alert.alert("Check email listed for verification")}}> */}
+                <TouchableOpacity onPress={() => router.replace('/profile/verificationCode')}>
                     <View style={styles.signUpBoxBtn}>
                         <Text style={styles.signUpBoxText}>Send verification email</Text>
                     </View>
