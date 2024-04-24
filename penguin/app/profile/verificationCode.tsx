@@ -3,11 +3,12 @@ import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, P
 import { Text, View } from '@/components/Themed';
 import HomeButton from '@/components/HomeButton'
 import { Link, router } from 'expo-router';
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import Apploading from 'expo-app-loading'
 import OTPInputView from '@twotalltotems/react-native-otp-input'
+import { SplashScreen } from 'expo-router';
 
 
 export default function verificationCodeScreen() {
@@ -34,15 +35,45 @@ export default function verificationCodeScreen() {
             
     //     }
     // }
-
     let [fontsLoaded] = useFonts({
         'Lobster-Regular': require('./../../assets/fonts/Lobster1.4.otf'),
         'Cool-Vetica': require('./../../assets/fonts/coolvetica_rg.otf'),
         'Nexa-Heavy': require('./../../assets/fonts/Nexa-Heavy.ttf'),
     });
-    if (!fontsLoaded){
-        return <Apploading/>;
+
+    const [appIsReady, setAppIsReady] = useState(false);
+    useEffect(() => {
+        async function prepare(){
+            try {
+                fontsLoaded
+            } catch (e){
+                console.warn(e);
+            } finally{
+                setAppIsReady(true);
+            }
+        }
+  
+        prepare();
+    }, []);
+  
+    const onLayoutRootView = useCallback(async () => {
+        if(appIsReady){
+            await SplashScreen.hideAsync();
+        }
+    }, [appIsReady]);
+  
+    if(!appIsReady){
+        return null;
     }
+
+    // let [fontsLoaded] = useFonts({
+    //     'Lobster-Regular': require('./../../assets/fonts/Lobster1.4.otf'),
+    //     'Cool-Vetica': require('./../../assets/fonts/coolvetica_rg.otf'),
+    //     'Nexa-Heavy': require('./../../assets/fonts/Nexa-Heavy.ttf'),
+    // });
+    // if (!fontsLoaded){
+    //     return <Apploading/>;
+    // }
 
     return(
 
