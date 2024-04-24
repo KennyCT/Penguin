@@ -78,7 +78,9 @@ export default function profuleScreen() {
             </View>
 
             <View style={styles.penguinBox}>
-                <Text style={styles.penguinBoxText}>Penguin</Text>
+                <TouchableOpacity onPress={() => router.replace('/profile/profileScreen')}>
+                    <Text style={styles.penguinBoxText}>Penguin</Text>
+                </TouchableOpacity>
             </View>
 
         </View>
