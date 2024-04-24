@@ -81,6 +81,24 @@ export default function verificationCodeScreen() {
                 </TouchableOpacity>
             </View>
 
+            <View style={styles.AdminBox}>
+                <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
+                <Text style={styles.AdminBoxText}>Admin</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.signUpBox}>
+                <TouchableOpacity onPress={() => {router.replace('/login/AppSignupClean')}}>
+                    <Text style={styles.signUpBoxText}>Previous</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.homeBox}>
+                <TouchableOpacity onPress={() => router.replace('/login/AppLogin')}>
+                <Text style={styles.homeBoxText}>Homepage</Text>
+                </TouchableOpacity>
+            </View>
+
         </View>
 
     );
@@ -88,9 +106,11 @@ export default function verificationCodeScreen() {
 
 const styles = StyleSheet.create({
     entireScreen: {
-        paddingVertical: 600,
+        paddingVertical: 500,
         paddingHorizontal: 100,
         backgroundColor: 'white',
+        borderColor: 'black',
+        borderRadius: 30
     },
     leftEyeBox: {
         backgroundColor: 'black', 
@@ -235,6 +255,51 @@ const styles = StyleSheet.create({
         fontWeight: '100',
         color: 'black',
         fontFamily: 'Nexa-Heavy'
-    }
+    },
+    AdminBox: {
+        backgroundColor: 'transparent', 
+        width: 80,
+        height: 30,
+        top: 625,
+        left: 10,
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    AdminBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
+    signUpBox: {
+        backgroundColor: 'transparent', 
+        width: 90, 
+        height: 30, 
+        top: 650,
+        left: 10,
+        alignItems: 'center', 
+        position: 'absolute',
+    },
+    signUpBoxText: {
+        fontSize: 13,
+        fontWeight: '800',
+        color: 'black',
+    },
+    homeBox: {
+        backgroundColor: 'transparent', 
+        width: 90,
+        height: 30,
+        top: 670,
+        left: 10,
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    homeBoxText: {
+        fontSize: 14,
+        fontWeight: '300',
+        color: 'black',
+        left: 10,
+        fontFamily: 'Nexa-Heavy'
+    },
 
   });

@@ -1,4 +1,4 @@
-import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, TextInput, ImageBackground } from 'react-native';
+import { StyleSheet, Animated, Alert, Button, SafeAreaView, ScrollView, Image, Pressable, TextInput, ImageBackground, Linking } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import HomeButton from '@/components/HomeButton'
@@ -52,7 +52,7 @@ export default function SigninScreen() {
             </View>
 
             <View style={styles.AdminBox}>
-                <TouchableOpacity onPress={() => router.replace('/login/AppLogin')}>
+                <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
                 <Text style={styles.AdminBoxText}>Admin</Text>
                 </TouchableOpacity>
             </View>
