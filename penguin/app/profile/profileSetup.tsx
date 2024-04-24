@@ -83,9 +83,39 @@ export default function profuleScreen() {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.clickMeBox}>
+            <View style={styles.contBox}>
                 <TouchableOpacity onPress={() => router.replace('/profile/profileScreen')}>
-                    <Text style={styles.clickMeBoxText}>Click me!</Text>
+                    <Text style={styles.contBoxText}>Continue!</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.interest1Box}>
+                <TouchableOpacity onPress={() => Alert.alert("Interest 1 Pressed")}>
+                    <Text style={styles.interest1BoxText}>Skiing</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.interest2Box}>
+                <TouchableOpacity onPress={() => Alert.alert("Interest 2 Pressed")}>
+                    <Text style={styles.interest2BoxText}>Beaching</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.interest3Box}>
+                <TouchableOpacity onPress={() => Alert.alert("Interest 3 Pressed")}>
+                    <Text style={styles.interest3BoxText}>Painting</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.interest4Box}>
+                <TouchableOpacity onPress={() => Alert.alert("Interest 4 Pressed")}>
+                    <Text style={styles.interest4BoxText}>Basketball</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.interest5Box}>
+                <TouchableOpacity onPress={() => Alert.alert("Interest 5 pressed")}>
+                    <Text style={styles.interest5BoxText}>Travel</Text>
                 </TouchableOpacity>
             </View>
 
@@ -165,7 +195,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontFamily: 'Lobster-Regular'
     },
-    clickMeBox: {
+    contBox: {
         backgroundColor: 'transparent', 
         width: 300, 
         height: 70, 
@@ -178,10 +208,110 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         position: 'absolute'
     },
-    clickMeBoxText: {
+    contBoxText: {
         fontSize: 46,
         fontWeight: '800',
         color: 'white',
+        fontFamily: 'Lobster-Regular'
+    },
+    interest1Box: {
+        backgroundColor: 'white', 
+        borderRadius: 50,
+        width: 65, 
+        height: 65, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top: 322,
+        left: 56,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    interest1BoxText: {
+        fontSize: 13,
+        fontWeight: 'normal',
+        color: '#2893d1',
+        fontFamily: 'Lobster-Regular'
+    },
+    interest2Box: {
+        backgroundColor: 'white', 
+        borderRadius: 50,
+        width: 65, 
+        height: 65, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top:295,
+        left: 208,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    interest2BoxText: {
+        fontSize: 13,
+        fontWeight: 'normal',
+        color: '#94d3f7',
+        fontFamily: 'Lobster-Regular'
+    },
+    interest3Box: {
+        backgroundColor: 'white', 
+        borderRadius: 50,
+        width: 75, 
+        height: 75, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top: 531,
+        left: 127,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    interest3BoxText: {
+        fontSize: 17,
+        fontWeight: 'normal',
+        color: '#6085e6',
+        fontFamily: 'Lobster-Regular'
+    },
+    interest4Box: {
+        backgroundColor: 'white', 
+        borderRadius: 50,
+        width: 86, 
+        height: 86, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top:367,
+        left: 269,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    interest4BoxText: {
+        fontSize: 15,
+        fontWeight: 'normal',
+        color: '#81b7d6',
+        fontFamily: 'Lobster-Regular'
+    },
+    interest5Box: {
+        backgroundColor: 'white', 
+        borderRadius: 50,
+        width: 50, 
+        height: 50, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top: 451,
+        left: 51,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    interest5BoxText: {
+        fontSize: 13,
+        fontWeight: 'normal',
+        color: '#4793bf',
         fontFamily: 'Lobster-Regular'
     },
     emailBox: {
