@@ -100,7 +100,7 @@ export default function verificationCodeScreen() {
             </View>
 
             <View style={styles.continueBox}>
-                <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
+                <TouchableOpacity onPress={() => router.replace('/profile/recommendedIcebergs')}>
                 <Text style={styles.continueBoxText}>Get Started!</Text>
                 </TouchableOpacity>
             </View>
