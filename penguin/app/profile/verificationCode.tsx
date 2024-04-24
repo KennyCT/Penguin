@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     },
     verifyLabelBox: {
         backgroundColor: '#ebab34', 
+        borderRadius: 10,
         width: 350,
         height: 50,
         top: 140,

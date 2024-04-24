@@ -83,6 +83,12 @@ export default function profuleScreen() {
                 </TouchableOpacity>
             </View>
 
+            <View style={styles.clickMeBox}>
+                <TouchableOpacity onPress={() => router.replace('/profile/profileScreen')}>
+                    <Text style={styles.clickMeBoxText}>Click me!</Text>
+                </TouchableOpacity>
+            </View>
+
         </View>
 
     );
@@ -154,6 +160,25 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
     penguinBoxText: {
+        fontSize: 46,
+        fontWeight: '800',
+        color: 'white',
+        fontFamily: 'Lobster-Regular'
+    },
+    clickMeBox: {
+        backgroundColor: 'transparent', 
+        width: 300, 
+        height: 70, 
+        // paddingHorizontal: 100,
+        // paddingVertical: 100,
+        top: 200,
+        left: 50,
+        //right: 50,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    clickMeBoxText: {
         fontSize: 46,
         fontWeight: '800',
         color: 'white',

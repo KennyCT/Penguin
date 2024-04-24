@@ -63,8 +63,8 @@ export default function verificationCodeScreen() {
                 <View style={styles.rightEyeBox}></View>
             </View>
             
-            <View style={styles.verifyLabelBox}>
-                <Text style={styles.verifyLabelBoxText}>Create Profile</Text>
+            <View style={styles.createProfBox}>
+                <Text style={styles.createProfBoxText}>Create Profile</Text>
             </View>
 
             <View style={styles.ageBox}>
@@ -99,6 +99,12 @@ export default function verificationCodeScreen() {
                 <Text style={styles.phoneInputBoxText}>Example Phone #</Text>
             </View>
 
+            <View style={styles.continueBox}>
+                <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
+                <Text style={styles.continueBoxText}>Get Started!</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.AdminBox}>
                 <TouchableOpacity onPress={() => router.replace('/tabs/home')}>
                 <Text style={styles.AdminBoxText}>Admin</Text>
@@ -106,7 +112,7 @@ export default function verificationCodeScreen() {
             </View>
 
             <View style={styles.signUpBox}>
-                <TouchableOpacity onPress={() => {router.replace('/login/AppSignupClean')}}>
+                <TouchableOpacity onPress={() => {router.replace('/profile/profileSetup')}}>
                     <Text style={styles.signUpBoxText}>Previous</Text>
                 </TouchableOpacity>
             </View>
@@ -153,8 +159,9 @@ const styles = StyleSheet.create({
     verifyDetails: {
         width: "100%"
     },
-    verifyLabelBox: {
+    createProfBox: {
         backgroundColor: '#ebab34', 
+        borderRadius: 10,
         width: 350,
         height: 50,
         top: 140,
@@ -163,7 +170,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         position: 'absolute'
     },
-    verifyLabelBoxText: {
+    createProfBoxText: {
         fontSize: 30,
         fontWeight: '100',
         color: 'black',
@@ -234,6 +241,7 @@ const styles = StyleSheet.create({
     },
     ageBox: {
         backgroundColor: '#c2bcb0',
+        borderRadius: 4,
         width: 100,
         height: 50,
         top: 250,
@@ -268,6 +276,7 @@ const styles = StyleSheet.create({
     },
     gradeBox: {
         backgroundColor: '#c2bcb0',
+        borderRadius: 4,
         width: 100,
         height: 50,
         top: 325,
@@ -302,6 +311,7 @@ const styles = StyleSheet.create({
     },
     majorBox: {
         backgroundColor: '#c2bcb0',
+        borderRadius: 4,
         width: 100,
         height: 50,
         top: 400,
@@ -336,6 +346,7 @@ const styles = StyleSheet.create({
     },
     phoneBox: {
         backgroundColor: '#c2bcb0',
+        borderRadius: 4,
         width: 100,
         height: 50,
         top: 475,
@@ -366,6 +377,23 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'normal',
         color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
+    continueBox: {
+        backgroundColor: 'black',
+        borderRadius: 4,
+        width: 200,
+        height: 50,
+        top: 550,
+        left: 100,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    continueBoxText: {
+        fontSize: 25,
+        fontWeight: 'normal',
+        color: 'white',
         fontFamily: 'Nexa-Heavy'
     },
     AdminBox: {
