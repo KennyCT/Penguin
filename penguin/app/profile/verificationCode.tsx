@@ -35,6 +35,7 @@ export default function verificationCodeScreen() {
             
     //     }
     // }
+
     let [fontsLoaded] = useFonts({
         'Lobster-Regular': require('./../../assets/fonts/Lobster1.4.otf'),
         'Cool-Vetica': require('./../../assets/fonts/coolvetica_rg.otf'),
