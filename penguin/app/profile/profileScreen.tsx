@@ -71,20 +71,32 @@ export default function verificationCodeScreen() {
                 {/* <TouchableOpacity onPress={() => router.replace('/profile/profileSetup')}></TouchableOpacity> */}
                 <Text style={styles.ageBoxText}>Age</Text>
             </View>
+            <View style={styles.ageInputBox}>
+                <Text style={styles.ageInputBoxText}>Example Age</Text>
+            </View>
 
             <View style={styles.gradeBox}>
                 {/* <TouchableOpacity onPress={() => router.replace('/profile/profileSetup')}></TouchableOpacity> */}
                 <Text style={styles.gradeBoxText}>Grade</Text>
+            </View>
+            <View style={styles.gradeInputBox}>
+                <Text style={styles.gradeInputBoxText}>Example Grade</Text>
             </View>
 
             <View style={styles.majorBox}>
                 {/* <TouchableOpacity onPress={() => router.replace('/profile/profileSetup')}></TouchableOpacity> */}
                 <Text style={styles.majorBoxText}>Major</Text>
             </View>
+            <View style={styles.majorInputBox}>
+                <Text style={styles.majorInputBoxText}>Example Major</Text>
+            </View>
 
             <View style={styles.phoneBox}>
                 {/* <TouchableOpacity onPress={() => router.replace('/profile/profileSetup')}></TouchableOpacity> */}
                 <Text style={styles.phoneBoxText}>Phone #</Text>
+            </View>
+            <View style={styles.phoneInputBox}>
+                <Text style={styles.phoneInputBoxText}>Example Phone #</Text>
             </View>
 
             <View style={styles.AdminBox}>
@@ -236,6 +248,24 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily: 'Nexa-Heavy'
     },
+    ageInputBox: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 2,
+        width: 200,
+        height: 50,
+        top: 250,
+        left: 150,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    ageInputBoxText: {
+        fontSize: 15,
+        fontWeight: 'normal',
+        color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
     gradeBox: {
         backgroundColor: '#c2bcb0',
         width: 100,
@@ -249,6 +279,24 @@ const styles = StyleSheet.create({
     gradeBoxText: {
         fontSize: 20,
         fontWeight: '100',
+        color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
+    gradeInputBox: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 2,
+        width: 200,
+        height: 50,
+        top: 325,
+        left: 150,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    gradeInputBoxText: {
+        fontSize: 15,
+        fontWeight: 'normal',
         color: 'black',
         fontFamily: 'Nexa-Heavy'
     },
@@ -268,6 +316,24 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily: 'Nexa-Heavy'
     },
+    majorInputBox: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 2,
+        width: 200,
+        height: 50,
+        top: 400,
+        left: 150,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    majorInputBoxText: {
+        fontSize: 15,
+        fontWeight: 'normal',
+        color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
     phoneBox: {
         backgroundColor: '#c2bcb0',
         width: 100,
@@ -281,6 +347,24 @@ const styles = StyleSheet.create({
     phoneBoxText: {
         fontSize: 20,
         fontWeight: '100',
+        color: 'black',
+        fontFamily: 'Nexa-Heavy'
+    },
+    phoneInputBox: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 2,
+        width: 200,
+        height: 50,
+        top: 475,
+        left: 150,
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'absolute'
+    },
+    phoneInputBoxText: {
+        fontSize: 15,
+        fontWeight: 'normal',
         color: 'black',
         fontFamily: 'Nexa-Heavy'
     },
